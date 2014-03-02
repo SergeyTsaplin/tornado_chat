@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html {% block html_attrs %}{% end %} lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Tornado Chat</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ static_url('chat.css') }}" type="text/css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js"></script>
+    <script src="{{ static_url('chat.js') }}"></script>
+  </head>
+  <body ng-controller="ChatCtrl">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">TornadoChat</a>
+        </div>
+        <div class="nav navbar-nav navbar-right">
+            {% block user_status %}{% end %}
+        </div>
+      </div>
+    </nav>
+    {% block content %}
+    {% end %}
+  </body>
+</html>

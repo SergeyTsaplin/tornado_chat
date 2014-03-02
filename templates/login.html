@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if failed %}
+        <div class="alert alert-danger">
+            {{ message }}
+        </div>
+    {% end %}
+    <div class="login-form">
+        <form method="post" class="form-horizontal" role="form">
+            {% module xsrf_form_html() %}
+            <div class="form-group">
+                <label for="username" class="col-sm-2 control-label">Username</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" placeholder="Username" name="username" id="username">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password" class="col-sm-2 control-label">Password</label>
+                <div class="col-sm-8">
+                    <input type="password" class="form-control" placeholder="Password" name="password" id="password">
+                </div>
+             </div>
+             <div class="form-froup">
+                 <div class="col-sm-offset-2 col-sm-8">
+                     <button type="submit" class="btn btn-primary">Sign in</button>
+                     or <a href="/signup">signup</a>
+                 </div>
+             </div>
+        </form>
+    </div>
+{% end %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block html_attrs %} ng-app="chat" {% end %}
+
+{% block user_status %}
+    <form class="navbar-form navbar-left" action="/logout" method="post">
+        {% module xsrf_form_html() %}
+        <p class="navbar-text">Signed in as <span class="text-info">{{ user.username }}</span></p>
+        <button type="submit" class="btn btn-success navbar-btn">Log out</button>
+    </form>
+{% end %}
+
+{% block content %}
+    <div id="content">
+        <a ng-click="getHistory()" class="center-block" id="history-link">Show previous messages</a>
+        <div ng-repeat="message in messages" class="message-container">
+            <span class="message-date text-muted">{[{ message.created_at }]}</span>
+            <span class="message-author text-info">{[{ message.user.username }]}</span>: &nbsp; &nbsp;
+            <span id="{[{ message.id }]}">{[{ message.text }]}</span>
+        </div>
+    </div>
+    <div class="fixed" id="chat-form-wrapper">
+      <form class="form-horizontal" role="form">
+        <div class="col-sm-10">
+          <input type="text" class="form-control" ng-model="post.text" placeholder="Input message to send" class="message"></input>
+        </div>
+        <button ng-click="send(post)" class="btn btn-primary" type="submit" title="Send post" data-toggle="tooltip">Send</button>
+      </form>
+    </div>
+{% end %}

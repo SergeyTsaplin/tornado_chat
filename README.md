@@ -24,4 +24,16 @@ After it you can to setup your local settings in *settings.py* file. And start
 your application. Don't forget about mongo: before starting the app you have to
 start mongo:
 
+
+## Run application
+
+Start MongoDB:
+
     $ mongod
+
+Start application:
+
+    $ cd /path/to/application
+    $ python app.py
+
+Open browser and go to http://localhost:5000
